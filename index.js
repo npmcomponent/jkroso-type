@@ -37,3 +37,5 @@ if (typeof window != 'undefined') {
     types['[object '+el+']'] = 'element'
   }
 }
+
+module.exports.types = types

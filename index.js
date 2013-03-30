@@ -4,7 +4,6 @@
  */
 
 var toString = Object.prototype.toString;
-var Element = typeof window != 'undefined' ? window.Element : Function;
 
 /**
  * Return the type of `val`.
@@ -15,11 +14,7 @@ var Element = typeof window != 'undefined' ? window.Element : Function;
  */
 
 module.exports = function(v){
-  var type = types[toString.call(v)];
-  if (type) return type;
-  if (v instanceof Element) return 'element';
-
-  return typeof v;
+  return types[toString.call(v)] || typeof v;
 };
 
 var types = {
@@ -35,4 +30,10 @@ var types = {
   '[object Boolean]': 'boolean',
   '[object Object]': 'object',
   '[object Text]': 'textnode'
+}
+
+if (typeof window != 'undefined') {
+  for (var el in window) if (/^HTML\w+Element$/.test(el)) {
+    types['[object '+el+']'] = 'element'
+  }
 }

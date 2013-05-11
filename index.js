@@ -14,7 +14,10 @@ var toString = Object.prototype.toString;
  */
 
 module.exports = function(v){
-  return types[toString.call(v)] || typeof v;
+  // .toString() is slow so try avoid it
+  return typeof v === 'object'
+    ? types[toString.call(v)]
+    : typeof v
 };
 
 var types = {
@@ -29,7 +32,11 @@ var types = {
   '[object Number]': 'number',
   '[object Boolean]': 'boolean',
   '[object Object]': 'object',
-  '[object Text]': 'textnode'
+  '[object Text]': 'textnode',
+  '[object Uint8Array]': '8bit-array',
+  '[object Uint16Array]': '16bit-array',
+  '[object Uint32Array]': '32bit-array',
+  '[object Uint8ClampedArray]': '8bit-array'
 }
 
 if (typeof window != 'undefined') {

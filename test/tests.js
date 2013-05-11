@@ -60,4 +60,10 @@ describe('type', function(){
   it('should match textnode\'s', function(){
     assert('textnode' === type(document.createTextNode('div')));
   });
+
+  it('should match typed arrays', function () {
+    assert('8bit-array' === type(new Uint8Array))
+    assert('16bit-array' === type(new Uint16Array))
+    assert('32bit-array' === type(new Uint32Array))
+  })
 });

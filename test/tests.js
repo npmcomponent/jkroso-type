@@ -66,4 +66,11 @@ describe('type', function(){
     assert('16bit-array' === type(new Uint16Array))
     assert('32bit-array' === type(new Uint32Array))
   })
+
+  it('should match errors', function(){
+    assert('error' === type(new Error))
+    assert('error' === type(new TypeError))
+    assert('error' === type(new RangeError))
+    assert('error' === type(new SyntaxError))
+  })
 });

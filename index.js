@@ -36,7 +36,8 @@ var types = {
   '[object Uint8Array]': '8bit-array',
   '[object Uint16Array]': '16bit-array',
   '[object Uint32Array]': '32bit-array',
-  '[object Uint8ClampedArray]': '8bit-array'
+  '[object Uint8ClampedArray]': '8bit-array',
+  '[object Error]': 'error'
 }
 
 if (typeof window != 'undefined') {

@@ -1,9 +1,8 @@
 
-/**
- * refs
- */
-
-var toString = Object.prototype.toString;
+var toString = {}.toString
+var DomNode = typeof window != 'undefined'
+  ? window.Node
+  : Function
 
 /**
  * Return the type of `val`.
@@ -13,14 +12,21 @@ var toString = Object.prototype.toString;
  * @api public
  */
 
-module.exports = function(v){
-  // .toString() is slow so try avoid it
-  return typeof v === 'object'
-    ? types[toString.call(v)]
-    : typeof v
-};
+module.exports = exports = function(x){
+  var type = typeof x
+  if (type != 'object') return type
+  type = types[toString.call(x)]
+  if (type) return type
+  if (x instanceof DomNode) switch (x.nodeType) {
+    case 1:  return 'element'
+    case 3:  return 'text-node'
+    case 9:  return 'document'
+    case 11: return 'document-fragment'
+    default: return 'dom-node'
+  }
+}
 
-var types = {
+var types = exports.types = {
   '[object Function]': 'function',
   '[object Date]': 'date',
   '[object RegExp]': 'regexp',
@@ -32,18 +38,10 @@ var types = {
   '[object Number]': 'number',
   '[object Boolean]': 'boolean',
   '[object Object]': 'object',
-  '[object Text]': 'textnode',
+  '[object Text]': 'text-node',
   '[object Uint8Array]': '8bit-array',
   '[object Uint16Array]': '16bit-array',
   '[object Uint32Array]': '32bit-array',
   '[object Uint8ClampedArray]': '8bit-array',
   '[object Error]': 'error'
 }
-
-if (typeof window != 'undefined') {
-  for (var el in window) if (/^HTML\w+Element$/.test(el)) {
-    types['[object '+el+']'] = 'element'
-  }
-}
-
-module.exports.types = types

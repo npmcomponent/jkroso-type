@@ -73,7 +73,7 @@ describe('type', function(){
 		})
 
 		it('should match textnodes', function(){
-			assert('textnode' === type(document.createTextNode('div')))
+			assert('text-node' === type(document.createTextNode('div')))
 		})
 	})
 })

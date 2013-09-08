@@ -1,11 +1,16 @@
 {
   "name": "type",
   "description": "Cross-browser type assertions (less broken typeof)",
-  "version": "1.0.0",
-  "keywords": ["typeof", "type", "utility"],
+  "keywords": [
+    "typeof",
+    "type",
+    "utility"
+  ],
   "dependencies": {},
   "development": {
-    "component/assert": "*"
+    "jkroso/assert": "0.2.1",
+    "jkroso/serve": "1.5.1",
+    "visionmedia/mocha": "1.12.1"
   },
   "scripts": [
     "index.js"

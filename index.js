@@ -43,5 +43,8 @@ var types = exports.types = {
   '[object Uint16Array]': '16bit-array',
   '[object Uint32Array]': '32bit-array',
   '[object Uint8ClampedArray]': '8bit-array',
-  '[object Error]': 'error'
+  '[object Error]': 'error',
+  '[object FormData]': 'form-data',
+  '[object File]': 'file',
+  '[object Blob]': 'blob'
 }

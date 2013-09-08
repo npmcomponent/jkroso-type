@@ -75,5 +75,17 @@ describe('type', function(){
 		it('should match textnodes', function(){
 			assert('text-node' === type(document.createTextNode('div')))
 		})
+
+		if (typeof FormData == 'function') it('should match from data', function(){
+			assert('form-data' === type(new FormData))
+		})
+
+		if (typeof File == 'function') it.skip('should match files', function(){
+			assert('file' === type(new File)) // TODO: fix test
+		})
+
+		if (typeof Blob == 'function') it('should match blobs', function(){
+			assert('blob' === type(new Blob))
+		})
 	})
 })

@@ -1,7 +1,7 @@
 {
   "name": "type",
   "description": "less broken typeof",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {},
   "devDependencies": {
     "assert": "jkroso/assert#0.2.1",

@@ -1,5 +1,5 @@
 
-var assert = require('assert')
+var assert = require('assert/index')
 var type   = require('..')
 
 describe('type', function(){
@@ -55,9 +55,9 @@ describe('type', function(){
 	})
 
 	it('should match typed arrays', function () {
-		assert('8bit-array' === type(new Uint8Array))
-		assert('16bit-array' === type(new Uint16Array))
-		assert('32bit-array' === type(new Uint32Array))
+		assert('bit-array' === type(new Uint8Array))
+		assert('bit-array' === type(new Uint16Array))
+		assert('bit-array' === type(new Uint32Array))
 	})
 
 	it('should match errors', function(){

@@ -6,7 +6,8 @@
   "devDependencies": {
     "assert": "jkroso/assert#0.2.1",
     "serve": "jkroso/serve#1.5.3",
-    "mocha": "*"
+    "mocha": "*",
+    "jsmd": "*"
   },
   "keywords": ["typeof", "type", "utility"],
   "files": ["index.js"]

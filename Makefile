@@ -9,6 +9,7 @@ test: node_modules
 		--timeout 500 \
 		--check-leaks \
 		--bail
+	@sed "s/'type/'.\//" Readme.md | node_modules/jsmd/bin/jsmd
 
 node_modules: package.json
 	@packin install --meta $< --folder $@
